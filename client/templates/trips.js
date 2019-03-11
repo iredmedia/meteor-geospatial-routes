@@ -4,14 +4,8 @@ var handle;
 var layers = {};
 // Default map bounds which encompass Manhattan.
 var BOX = {
-  sw: {
-    lat: 40.68818804944925,
-    lon: -74.05574798583986
-  },
-  ne: {
-    lat: 40.81822635589172,
-    lon: -73.88408660888673
-  }
+  ne: {lat: 37.79421395982296, lon: -122.39247544911538},
+  sw: {lat: 37.7671468843928, lon: -122.46568902638589}
 };
 
 var subscribeWithBounds = function(template, e) {
