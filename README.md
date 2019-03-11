@@ -8,7 +8,7 @@ etc.). Using MongoDB's `$geoWithin` geospatial operator (which only works on the
 server, *not* with `minimongo`) a trips subscription is created based on
 the current GPS bounds of the map.
 
-![Meteor Geospatial Demo (screenshot)](https://i.imgur.com/aBRrlVI.jpg)
+![Meteor Geospatial Routes (screenshot)](https://puu.sh/CYbw3/38dab033ea.png)
 
 ## Installation & usage
 
