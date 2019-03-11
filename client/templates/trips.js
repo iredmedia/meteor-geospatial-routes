@@ -43,7 +43,7 @@ Template.trips.onRendered(function() {
   L.Icon.Default.imagePath = 'packages/bevanhunt_leaflet/images';
 
   // Render map with default bounds.
-  var map = L.map('map');
+  var map = window.map = L.map('map');
 
   map.on('load', function(e) {
     subscribeWithBounds(template, e);
@@ -66,10 +66,16 @@ Template.trips.onRendered(function() {
 
   template.trips().observeChanges({
     added: function(id, trip) {
-      var marker = L.marker([
-          trip.location.coordinates[1],
-          trip.location.coordinates[0],
-      ]);
+      var marker = L.geoJson(trip.location, {
+        style: function(feature) {
+          return {
+            color: "black",
+            opacity: 1,
+            fillColor: "white",
+            fillOpacity: 1
+          }
+        }
+      });
       marker.trip = trip;
       marker.trip._id = id;
       marker.on('click', function(e) {

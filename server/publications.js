@@ -11,7 +11,7 @@ Meteor.publish('trips', function(box) {
   });
 
   return Trips.find({
-    location: {
+    "location.coordinates": {
       $geoWithin: {
         $box: [
           [box.sw.lon, box.sw.lat],
