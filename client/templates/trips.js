@@ -1,6 +1,6 @@
 // Subscription handle used in various Template functions.
 var handle;
-// The Leaflet marker layers related to restaurants.
+// The Leaflet marker layers related to trips.
 var layers = {};
 // Default map bounds which encompass Manhattan.
 var BOX = {
@@ -20,23 +20,23 @@ var subscribeWithBounds = function(template, e) {
     handle.stop();
   }
 
-  // Subscribe to all restaurants currently displayed on the map.
-  handle = template.subscribe('restaurants', getMapBounds(e));
+  // Subscribe to all trips currently displayed on the map.
+  handle = template.subscribe('trips', getMapBounds(e));
 };
 
-Template.restaurants.onCreated(function() {
+Template.trips.onCreated(function() {
   var template = this;
 
-  handle = template.subscribe('restaurants', BOX);
+  handle = template.subscribe('trips', BOX);
 
-  template.restaurants = function() {
+  template.trips = function() {
     // Always return all documents from the collection. Because minimongo
     // doesn't support $geoWithin we cannot use client side filtering.
-    return Restaurants.find({}, {sort: {name: 1}});
+    return Trips.find({}, {sort: {name: 1}});
   };
 });
 
-Template.restaurants.onRendered(function() {
+Template.trips.onRendered(function() {
   var template = this;
 
   // Use Leaflet images from bevanhunt:leaflet.
@@ -64,14 +64,14 @@ Template.restaurants.onRendered(function() {
     subscribeWithBounds(template, e);
   });
 
-  template.restaurants().observeChanges({
-    added: function(id, restaurant) {
+  template.trips().observeChanges({
+    added: function(id, trip) {
       var marker = L.marker([
-          restaurant.location.coordinates[1],
-          restaurant.location.coordinates[0],
+          trip.location.coordinates[1],
+          trip.location.coordinates[0],
       ]);
-      marker.restaurant = restaurant;
-      marker.restaurant._id = id;
+      marker.trip = trip;
+      marker.trip._id = id;
       marker.on('click', function(e) {
         handleMarkerClick(e);
       });
@@ -85,13 +85,13 @@ Template.restaurants.onRendered(function() {
   });
 });
 
-Template.restaurants.helpers({
-  restaurants: function() {
+Template.trips.helpers({
+  trips: function() {
     var template = Template.instance();
-    return template.restaurants();
+    return template.trips();
   },
   listIsEmpty: function() {
     var template = Template.instance();
-    return (template.restaurants().count() === 0 && handle.ready());
+    return (template.trips().count() === 0 && handle.ready());
   }
 });

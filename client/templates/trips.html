@@ -1,5 +1,5 @@
-<template name="restaurants">
-  <div class="restaurants clearfix">
+<template name="trips">
+  <div class="trips clearfix">
     <div class="map-wrapper col lg-col-8">
       <div id="map"></div>
     </div>
@@ -7,15 +7,15 @@
       <h1 class="mxn2 mt0 mb0 p2 fixed bg-blue white">Meteor Geospatial Demo</h1>
       {{#if Template.subscriptionsReady}}
         <ul class="list-reset mxn2">
-          {{#each restaurants}}
-            <li>{{> restaurant}}</li>
+          {{#each trips}}
+            <li>{{> trip}}</li>
           {{/each}}
         </ul>
       {{else}}
         <p class="italic gray py2">Loading...</p>
       {{/if}}
       {{#if listIsEmpty}}
-        <p>No restaurants found.</p>
+        <p>No trips found.</p>
       {{/if}}
     </div>
   </div>

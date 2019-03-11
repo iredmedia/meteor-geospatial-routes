@@ -17,19 +17,22 @@ getMapBounds = function(e) {
 handleMarkerClick = function(e) {
   // The clicker marker layer.
   var layer = e.target;
-  // The related DOM element in the restaurant listing.
-  var el = $('.restaurant[data-mongodb-id=\'' + layer.restaurant._id + '\']');
 
-  // Show pop up balloon with restaurant name above marker.
-  layer.bindPopup(layer.restaurant.name).openPopup();
+  console.log(layer);
 
-  // Highlight restaurant in listing.
-  $('.restaurant').removeClass('bg-silver');
+  // The related DOM element in the trip listing.
+  var el = $('.trip[data-mongodb-id=\'' + layer.trip._id + '\']');
+
+  // Show pop up balloon with trip name above marker.
+  layer.bindPopup(layer.trip.name).openPopup();
+
+  // Highlight trip in listing.
+  $('.trip').removeClass('bg-silver');
   el.addClass('bg-silver');
 
-  // Scroll to the restaurant related to the clicked marker.
+  // Scroll to the trip related to the clicked marker.
   var offset = el.position().top;
-  $('.restaurants .listing').animate({
-    scrollTop: $('.restaurants .listing').scrollTop() + offset
+  $('.trips .listing').animate({
+    scrollTop: $('.trips .listing').scrollTop() + offset
   }, 1000);
 };

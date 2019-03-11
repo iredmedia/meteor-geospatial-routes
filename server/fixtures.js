@@ -1,11 +1,11 @@
-// Insert restaurant fixtures if the Restaurants collection is empty.
+// Insert trip fixtures if the Trips collection is empty.
 Meteor.startup(function() {
-  if (Restaurants.find().count() === 0) {
-    var restaurantFixtures = JSON.parse(
-        Assets.getText('fixtures/restaurants.json'));
+  if (Trips.find().count() === 0) {
+    var tripFixtures = JSON.parse(
+        Assets.getText('fixtures/trips.json'));
 
-    _.each(restaurantFixtures, function(restaurant) {
-      Restaurants.insert(restaurant);
+    _.each(tripFixtures, function(trip) {
+      Trips.insert(trip);
     });
   }
 });

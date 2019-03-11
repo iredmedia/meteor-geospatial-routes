@@ -3,9 +3,9 @@
 MongoDB's geospatial features make it pretty easy to build a Meteor application
 with location based services. This demo shows a
 [Leaflet](http://leafletjs.com/)-powered map and a text based listing of
-restaurants, with reactive behavior when the map is updated (dragged, zoomed,
+trips, with reactive behavior when the map is updated (dragged, zoomed,
 etc.). Using MongoDB's `$geoWithin` geospatial operator (which only works on the
-server, *not* with `minimongo`) a restaurants subscription is created based on
+server, *not* with `minimongo`) a trips subscription is created based on
 the current GPS bounds of the map.
 
 ![Meteor Geospatial Demo (screenshot)](https://i.imgur.com/aBRrlVI.jpg)

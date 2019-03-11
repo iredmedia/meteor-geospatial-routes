@@ -1,4 +1,4 @@
-Meteor.publish('restaurants', function(box) {
+Meteor.publish('trips', function(box) {
   check(box, {
     sw: {
       lat: Number,
@@ -10,7 +10,7 @@ Meteor.publish('restaurants', function(box) {
     }
   });
 
-  return Restaurants.find({
+  return Trips.find({
     location: {
       $geoWithin: {
         $box: [
